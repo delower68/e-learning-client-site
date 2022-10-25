@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import React from 'react';
+import React , {useState}from 'react';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -8,8 +8,8 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
 
-  const {createUser} =useContext(AuthContext);
-
+  const {createUser,updateUserProfile} =useContext(AuthContext);
+  const [error, setError] = useState();
 
 
     // using email and password and create an user  
@@ -26,9 +26,32 @@ const Register = () => {
         createUser(email, password)
         .then(result => {
           const user = result.user;
+          setError('')
+          form.reset();
           console.log(user);
+          handleUpdateUserProfile(name , photoURL)
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+          console.error(error);
+          setError(error.message)
+        });
+
+
+
+
+        // handleUserProfle 
+      const handleUpdateUserProfile =(name , photoURL)=>{
+        const profile = {
+          displayName: name,
+          photoURL : photoURL
+
+        }  
+        updateUserProfile(profile)
+        .then(()=>{})
+        .catch(error =>console.error(error))
+      }
+
+
   }
 
     return (
@@ -67,7 +90,7 @@ const Register = () => {
         <Button variant="primary" type="submit" >
           Sign In
         </Button>
-        <Form.Text className="text-danger"></Form.Text>
+        <Form.Text className="text-danger">{error}</Form.Text>
       </Form>
         </div>
     );

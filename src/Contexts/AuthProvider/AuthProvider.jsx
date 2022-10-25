@@ -31,7 +31,6 @@ const AuthProvider = ({children}) => {
         }
 
 
-        // login with google 
           // google log in 
     const providerLogin = (provider)=>{
         setLoading(true);
