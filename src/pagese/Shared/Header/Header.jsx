@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FaShopware } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import RightSideNav from "../RightSideNav/RightSideNav";
 
 const Header = () => {
   return (
@@ -47,8 +48,12 @@ const Header = () => {
                 </Link>
               </Button>
             </Nav>
+            <div className="d-lg-none">
+                <RightSideNav></RightSideNav>
+            </div>
           </Navbar.Collapse>
         </Container>
+        
       </Navbar>
     </div>
   );
