@@ -19,7 +19,7 @@ const RightSideNav = () => {
       <div>
         {courses.map((course) => (
           
-            <ListGroup key={course.id}>
+            <ListGroup key={course._id}>
               <ListGroup.Item className="mb-2"><Link to={`/courses/${course._id}`}>{course.title}</Link></ListGroup.Item>
             </ListGroup>
           

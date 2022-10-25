@@ -10,7 +10,7 @@ const Courses = () => {
             <h2>The Courses are: {courses.length}</h2>
             {
                 courses.map(course =><Course
-                    key={course.id}
+                    key={course._id}
                     course ={course}
                 ></Course>)
             }
