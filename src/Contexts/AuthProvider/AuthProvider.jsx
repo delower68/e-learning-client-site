@@ -12,9 +12,13 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+
+    // using email and password and create an user  
     const createUser = (email , password)=>{
         return createUserWithEmailAndPassword(auth, email , password)
     }
+
+    
 
     // user state change control 
     useEffect(()=>{

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -23,6 +24,12 @@ const Login = () => {
             placeholder="Password"
             required
           />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <p>
+            Don't have any account. Go to <Link to='/register'>Sing up</Link>
+          </p>
         </Form.Group>
 
         <Button variant="primary" type="submit">

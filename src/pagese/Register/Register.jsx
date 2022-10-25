@@ -2,12 +2,38 @@ import { Button } from 'react-bootstrap';
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const Register = () => {
+
+  const {createUser} =useContext(AuthContext);
+
+
+
+    // using email and password and create an user  
+  const handleSubmit = event =>{
+    event.preventDefault();
+        const form = event.target;
+        const name = form.name.value ;
+        const photoURL = form.photoURL.value
+        const email = form.email.value ;
+        const password = form.password.value;
+        console.log(name, email , password, photoURL);
+
+
+        createUser(email, password)
+        .then(result => {
+          const user = result.user;
+          console.log(user);
+        })
+        .catch(error => console.error(error))
+  }
+
     return (
         <div>
-            <Form className='mt-5' style={{ width: '50%' }}>
+            <Form onSubmit={handleSubmit} className='mt-5' style={{ width: '50%' }}>
         
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Your Name</Form.Label>
@@ -32,14 +58,13 @@ const Register = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check 
-        
-        type="checkbox" 
-        label={<>Accept <Link to='/terms'>Terms and Conditions</Link></>} />
-      </Form.Group>
+          <p>
+            Already have an account? Go to <Link to='/login'>Login</Link>
+          </p>
+        </Form.Group>
 
         
-        <Button variant="primary" type="submit" disabled>
+        <Button variant="primary" type="submit" >
           Sign In
         </Button>
         <Form.Text className="text-danger"></Form.Text>
