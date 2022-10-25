@@ -1,13 +1,23 @@
-import React from "react";
-import { Button } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { FaShopware } from "react-icons/fa";
+import { FaShopware, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import RightSideNav from "../RightSideNav/RightSideNav";
 
 const Header = () => {
+
+  const {user,logOut} = useContext(AuthContext)
+
+  const handelLogOut = ()=>{
+    logOut()
+    .then(()=>{})
+    .catch(error => console.error(error))
+  }
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -39,14 +49,29 @@ const Header = () => {
               </Button>
             </Nav>
             <Nav>
-              <Button variant="outline-dark" className="me-2">
-                <Link to="/register">Sing Up</Link>
-              </Button>
-              <Button variant="outline-dark">
-                <Link eventKey={2} to="/login">
-                  Login
-                </Link>
-              </Button>
+            <Nav.Link to='/'>
+                {
+                  user?.uid?
+                  <>
+                    <span>{user?.displayName}</span>
+                    <Button variant='light' onClick={handelLogOut}>Log out</Button>
+                  </>
+                  :
+                  <>
+                    <Button variant='light'><Link to='/login'>Login</Link></Button>
+                    <Button variant='light'><Link to='/register'>Register</Link></Button>
+                  </>
+                }
+               
+              
+              </Nav.Link>
+              <Nav.Link>
+              {user?.photoURl?
+                 <Image style={{height:"40px"}} roundedCircle sec={user.photoURl}></Image>
+                 :
+                 <FaUser></FaUser>  
+              }
+              </Nav.Link>
             </Nav>
             <div className="d-lg-none">
                 <RightSideNav></RightSideNav>
