@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button, Image } from "react-bootstrap";
+import Button  from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -10,11 +10,13 @@ import RightSideNav from "../RightSideNav/RightSideNav";
 
 const Header = () => {
 
-  const {user,logOut} = useContext(AuthContext)
+  const {user,logOut, setUser} = useContext(AuthContext)
 
   const handelLogOut = ()=>{
     logOut()
-    .then(()=>{})
+    .then(()=>{
+      setUser({})
+    })
     .catch(error => console.error(error))
   }
 
@@ -29,7 +31,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Button variant="">
+              <Button variant="light">
                 <Link className="me-2" to="/">
                   Home
                 </Link>
@@ -54,7 +56,8 @@ const Header = () => {
                   user?.uid?
                   <>
                     <span>{user?.displayName}</span>
-                    <Button variant='light' onClick={handelLogOut}>Log out</Button>
+                    <img style={{height:"40px"}}  sec={user?.photoURL} alt=''></img>
+                    <Button variant='light' onClick={handelLogOut}><Link to='/login'>Log out</Link></Button>
                   </>
                   :
                   <>
@@ -67,9 +70,9 @@ const Header = () => {
               </Nav.Link>
               <Nav.Link>
               {user?.photoURl?
-                 <Image style={{height:"40px"}} roundedCircle sec={user.photoURl}></Image>
+                 <img style={{height:"40px"}} roundedCircle sec={user?.photoURl} alt=''></img>
                  :
-                 <FaUser></FaUser>  
+                 <FaUser></FaUser> 
               }
               </Nav.Link>
             </Nav>

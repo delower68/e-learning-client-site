@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 
 const Login = () => {
-  const {signIn} = useContext(AuthContext);
+  const {signIn, auth, setUser} = useContext(AuthContext);
   const [error, setError] = useState();
 
   const navigate = useNavigate();
@@ -28,10 +28,26 @@ const Login = () => {
           .then(result => {
               const user = result.user;
               console.log(user);
+              // setUser(user)
+
           })
           .catch(error => console.error(error))
       } 
 
+
+      // login with Github here
+
+      const gitHubProvider = new GithubAuthProvider()
+
+      const handelGitHubSignIn = ()=>{
+        signInWithPopup(auth, gitHubProvider)
+        .then(result =>{
+          const user = result.user;
+          console.log(user);
+          setUser(user)
+        })
+        .then(error => console.error(error))
+      }
 
       // form submit here 
   const handleSubmit = (e) => {
@@ -87,6 +103,9 @@ const Login = () => {
 
         <div className='mt-3'>
         <Button variant='dark' onClick={handelGoogleSignIn} >Login with Google</Button>
+        </div>
+        <div className='mt-3'>
+        <Button variant='dark' onClick={handelGitHubSignIn} >Login with GitHub</Button>
         </div>
         <Form.Text className="text-danger">{error}</Form.Text>
       </Form>

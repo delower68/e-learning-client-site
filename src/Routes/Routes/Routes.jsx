@@ -7,6 +7,7 @@ import ErrorPage from "../../pagese/ErrorPage/ErrorPage";
 import Home from "../../pagese/Home/Home";
 import Login from "../../pagese/Login/Login";
 import Register from "../../pagese/Register/Register";
+import PrivateRoute from "../../PriveteRoute/PrivateRoute";
 
 
 
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/courses/:id',
-                element: <SingleCourse/>,
+                element: <PrivateRoute><SingleCourse/></PrivateRoute>,
                 loader: ({params})=>fetch(`https://e-learning-coral.vercel.app/courses/${params.id}`)
 
             },
