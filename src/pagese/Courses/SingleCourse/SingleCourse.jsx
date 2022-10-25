@@ -6,7 +6,8 @@ import {  useLoaderData } from 'react-router-dom';
 const SingleCourse = () => {
     const singleCourse = useLoaderData();
     const { author, title,  rating, description, image_url} = singleCourse;
-    console.log(singleCourse);
+
+    
     return (
         <div>
             <Card className=" mb-5">
