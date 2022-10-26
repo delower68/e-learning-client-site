@@ -4,6 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 
 const Login = () => {
@@ -70,6 +71,9 @@ const Login = () => {
   };
   return (
     <div className="mx-auto">
+
+      <h1 className="mt-5">Please Login </h1>
+
       <Form onSubmit={handleSubmit} className="mt-5 " style={{ width: '50%' }}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -101,11 +105,10 @@ const Login = () => {
           Login
         </Button>
 
-        <div className='mt-3'>
-        <Button variant='dark' onClick={handelGoogleSignIn} >Login with Google</Button>
-        </div>
-        <div className='mt-3'>
-        <Button variant='dark' onClick={handelGitHubSignIn} >Login with GitHub</Button>
+        <div className='mt-3 '>
+        <Button variant='dark'className="me-3" onClick={handelGoogleSignIn} ><FaGoogle/> Google</Button>
+        
+        <Button variant='dark' onClick={handelGitHubSignIn} ><FaGithub/> GitHub</Button>
         </div>
         <Form.Text className="text-danger">{error}</Form.Text>
       </Form>

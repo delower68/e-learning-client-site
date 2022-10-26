@@ -3,10 +3,12 @@ import Button  from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { FaShopware, FaUser } from "react-icons/fa";
+import { FaShopware } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import RightSideNav from "../RightSideNav/RightSideNav";
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; 
 
 const Header = () => {
 
@@ -26,6 +28,7 @@ const Header = () => {
         <Container>
           <Navbar.Brand href="#home">
             <FaShopware />
+            
             -Learning
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -46,17 +49,21 @@ const Header = () => {
                   Blog
                 </Link>
               </Button>
+              <Tippy content='Question'>
               <Button  variant="light">
                 <Link>FAQ</Link>
               </Button>
+              </Tippy>
             </Nav>
             <Nav>
             <Nav.Link to='/'>
                 {
                   user?.uid?
                   <>
-                    <span>{user?.displayName}</span>
-                    <img style={{height:"40px"}}  sec={user?.photoURL} alt=''></img>
+                   
+                    <Tippy content={user?.displayName}>
+                      <img style={{height:"40px"}}  sec={user?.photoURL} alt=''></img>
+                      </Tippy>
                     <Button variant='light' onClick={handelLogOut}><Link to='/login'>Log out</Link></Button>
                   </>
                   :
@@ -69,11 +76,7 @@ const Header = () => {
               
               </Nav.Link>
               <Nav.Link>
-              {user?.photoURl?
-                 <img style={{height:"40px"}} roundedCircle sec={user?.photoURl} alt=''></img>
-                 :
-                 <FaUser></FaUser> 
-              }
+               
               </Nav.Link>
             </Nav>
             <div className="d-lg-none">
