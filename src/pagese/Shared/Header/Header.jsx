@@ -11,6 +11,8 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import ReactSwitch from 'react-switch' ;  
 import { ThemeContext } from "../../../App";
+import Image from 'react-bootstrap/Image'
+import './Header'
 
 
 
@@ -35,7 +37,7 @@ const Header = () => {
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
           <Navbar.Brand href="#home">
-            <Link>
+            <Link >
             <FaShopware />
             
             -Learning
@@ -59,11 +61,13 @@ const Header = () => {
                   Blog
                 </Link>
               </Button>
-              <Tippy content='Question'>
+
+              <Tippy content='Your Question'>
               <Button  variant="light">
                 <Link>FAQ</Link>
               </Button>
               </Tippy>
+
             </Nav>
             <Nav>
             <Nav.Link to='/'>
@@ -72,7 +76,7 @@ const Header = () => {
                   <>
                    
                     <Tippy content={user?.displayName}>
-                      <img style={{height:"40px"}}  sec={user?.photoURL} alt=''></img>
+                      <Image style={{height:"45px"}} className='me-2' roundedCircle src={user?.photoURL} ></Image>
                       </Tippy>
                     <Button variant='light' onClick={handelLogOut}><Link to='/login'>Log out</Link></Button>
                   </>

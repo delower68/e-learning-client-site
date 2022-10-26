@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form,  } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FaGithub, FaGoogle } from "react-icons/fa";
+
 
 
 const Login = () => {
@@ -28,8 +29,8 @@ const Login = () => {
           providerLogin(googleProvider)
           .then(result => {
               const user = result.user;
-              console.log(user);
-              // setUser(user)
+              setUser(user)
+              navigate(from , {replace: true});
 
           })
           .catch(error => console.error(error))
@@ -44,8 +45,8 @@ const Login = () => {
         signInWithPopup(auth, gitHubProvider)
         .then(result =>{
           const user = result.user;
-          console.log(user);
-          setUser(user)
+          setUser(user);
+          navigate(from , {replace: true});
         })
         .then(error => console.error(error))
       }
@@ -56,10 +57,13 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
+
+    // create user here 
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        setUser(user)
         form.reset();
         setError("");
         navigate(from , {replace: true});
@@ -70,6 +74,7 @@ const Login = () => {
       });
   };
   return (
+    
     <div className="mx-auto">
 
       <h1 className="mt-5">Please Login </h1>
@@ -105,14 +110,15 @@ const Login = () => {
           Login
         </Button>
 
-        <div className='mt-3 '>
+        <div className='mt-3 mb-5'>
         <Button variant='dark'className="me-3" onClick={handelGoogleSignIn} ><FaGoogle/> Google</Button>
         
         <Button variant='dark' onClick={handelGitHubSignIn} ><FaGithub/> GitHub</Button>
         </div>
-        <Form.Text className="text-danger">{error}</Form.Text>
+        <Form.Text className="text-danger mb-5">{error}</Form.Text>
       </Form>
     </div>
+    
   );
 };
 

@@ -2,18 +2,12 @@ import React from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import jsPDF from 'jspdf';
+
 const Course = ({ course }) => {
   
   const { title, image_url, author, rating, _id  } = course;
 
-  // pdf generate here
-  const pdfGenerate = ()=>{
-    const doc = new jsPDF('landscape', 'px', 'a4', 'false');
-    doc.setFont('Helvertica', 'bold')
-    doc.text(60, 80, (title))
-    doc.save('a.pdf')
-  }
+
   
   return (
     <div >
@@ -35,7 +29,7 @@ const Course = ({ course }) => {
                 </div>
               </div>
               <div className="d-flex justify-content-between">
-                <Button onClick={pdfGenerate}>Download PDF</Button> 
+                
                 <Button variant="info"><Link to={`/courses/${_id}`}>Get Premium</Link></Button>
               </div>
             </Card.Body>

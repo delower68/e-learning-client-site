@@ -8,7 +8,7 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
 
-  const {createUser,updateUserProfile} =useContext(AuthContext);
+  const {createUser,setUser, updateUserProfile} =useContext(AuthContext);
   const [error, setError] = useState();
 
 
@@ -20,15 +20,14 @@ const Register = () => {
         const photoURL = form.photoURL.value
         const email = form.email.value ;
         const password = form.password.value;
-        console.log(name, email , password, photoURL);
 
-
+        // create user here 
         createUser(email, password)
         .then(result => {
           const user = result.user;
           setError('')
           form.reset();
-          console.log(user);
+          setUser(user);
           handleUpdateUserProfile(name , photoURL)
         })
         .catch(error => {
@@ -87,10 +86,10 @@ const Register = () => {
         </Form.Group>
 
         
-        <Button variant="primary" type="submit" >
+        <Button variant="primary" type="submit" className='mb-5' >
           Sign In
         </Button>
-        <Form.Text className="text-danger">{error}</Form.Text>
+        <Form.Text className="text-danger mb-5">{error}</Form.Text>
       </Form>
         </div>
     );
