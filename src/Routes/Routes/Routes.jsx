@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
                 path: '/',
                 element: <Home/>,
                 
-                // loader: ()=>fetch('https://e-learning-coral.vercel.app/courses/')
+                loader: ()=>fetch('https://e-learning-coral.vercel.app/courses/')
             },
             {
                 path:'/courses',

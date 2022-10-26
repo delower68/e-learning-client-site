@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Button  from "react-bootstrap/Button";
+import {Button}  from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -8,9 +8,15 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import RightSideNav from "../RightSideNav/RightSideNav";
 import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css'; 
+import 'tippy.js/dist/tippy.css';
+import ReactSwitch from 'react-switch' ;  
+import { ThemeContext } from "../../../App";
+
+
 
 const Header = () => {
+
+  const {theme, toggleTheme} = useContext(ThemeContext);
 
   const {user,logOut, setUser} = useContext(AuthContext)
 
@@ -22,14 +28,18 @@ const Header = () => {
     .catch(error => console.error(error))
   }
 
+
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
           <Navbar.Brand href="#home">
+            <Link>
             <FaShopware />
             
             -Learning
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -75,9 +85,16 @@ const Header = () => {
                
               
               </Nav.Link>
+
+
               <Nav.Link>
-               
+               <ReactSwitch onChange={toggleTheme} checked={theme === 'dark'}>
+
+
+               </ReactSwitch>
               </Nav.Link>
+
+
             </Nav>
             <div className="d-lg-none">
                 <RightSideNav></RightSideNav>
