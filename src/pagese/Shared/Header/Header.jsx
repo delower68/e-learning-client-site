@@ -36,17 +36,17 @@ const Header = () => {
                   Home
                 </Link>
               </Button>
-              <Button text-light variant="light">
+              <Button variant="light">
                 <Link className="me-2" to="/courses">
                   Courses
                 </Link>
               </Button>
-              <Button text-light variant="light">
+              <Button  variant="light">
                 <Link className="me-2" to="/blog">
                   Blog
                 </Link>
               </Button>
-              <Button text-light variant="light">
+              <Button  variant="light">
                 <Link>FAQ</Link>
               </Button>
             </Nav>
