@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
+import { Button } from "react-bootstrap";
 
 const RightSideNav = () => {
   const [courses, setCourses] = useState([]);
@@ -20,7 +21,7 @@ const RightSideNav = () => {
         {courses.map((course) => (
           
             <ListGroup key={course._id}>
-              <ListGroup.Item className="mb-2"><Link to={`/courses/${course._id}`}>{course.title}</Link></ListGroup.Item>
+              <Link to={`/courses/${course._id}`}><Button variant="light" className="mb-2 list-unstyled">{course.title}</Button></Link>
             </ListGroup>
           
         ))}

@@ -11,8 +11,8 @@ const Course = ({ course }) => {
   
   return (
     <div >
-      <Row>
-        <Col >
+      
+        
           <Card className=" mb-5 mt-5">
             <Card.Header className="d-flex justify-content-between align-items-center">
               <Card.Img variant="top" className="fluid" src={image_url} />
@@ -30,13 +30,12 @@ const Course = ({ course }) => {
               </div>
               <div className="d-flex justify-content-between">
                 
-                <Button variant="info"><Link to={`/courses/${_id}`}>Get Premium</Link></Button>
+              <Link to={`/courses/${_id}`}><Button variant="info">Get Premium</Button></Link>
               </div>
             </Card.Body>
             <Card.Footer className="d-flex justify-content-between"></Card.Footer>
           </Card>
-        </Col>
-      </Row>
+        
     </div>
   );
 };

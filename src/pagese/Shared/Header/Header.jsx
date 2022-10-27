@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import {Button}  from "react-bootstrap";
+import Button  from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -36,36 +36,39 @@ const Header = () => {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="#home">
-            <Link >
+        
+           
+          <h4 className="me-3">
             <FaShopware />
             
             -Learning
-            </Link>
-          </Navbar.Brand>
+         
+            </h4>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Button variant="light">
                 <Link className="me-2" to="/">
-                  Home
-                </Link>
-              </Button>
               <Button variant="light">
+                  Home
+              </Button>
+                </Link>
                 <Link className="me-2" to="/courses">
+              <Button variant="light">
                   Courses
-                </Link>
               </Button>
-              <Button  variant="light">
+                </Link>
                 <Link className="me-2" to="/blog">
+              <Button  variant="light">
                   Blog
-                </Link>
               </Button>
+                </Link>
 
               <Tippy content='Your Question'>
+                <Link>
               <Button  variant="light">
-                <Link>FAQ</Link>
+                FAQ
               </Button>
+                </Link>
               </Tippy>
 
             </Nav>
@@ -78,12 +81,12 @@ const Header = () => {
                     <Tippy content={user?.displayName}>
                       <Image style={{height:"45px"}} className='me-2' roundedCircle src={user?.photoURL} ></Image>
                       </Tippy>
-                    <Button variant='light' onClick={handelLogOut}><Link to='/login'>Log out</Link></Button>
+                      <Link to='/login'><Button variant='light' onClick={handelLogOut}>Log out</Button></Link>
                   </>
                   :
                   <>
-                    <Button variant='light'><Link to='/login'>Login</Link></Button>
-                    <Button variant='light'><Link to='/register'>Register</Link></Button>
+                    <Link to='/login'><Button className="me-2" variant='light'>Login</Button></Link>
+                    <Link to='/register'><Button variant='light'>Register</Button></Link>
                   </>
                 }
                
