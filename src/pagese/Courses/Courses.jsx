@@ -1,15 +1,15 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Course from './Course/Course';
-import customCss from './Courses.module'
+import  './Courses.css'
 
 const Courses = () => {
     const courses = useLoaderData();
 
     return (
-        <div>
+        <div >
             <h2>The Courses are: {courses.length}</h2>
-            <div className={customCss.creategrid}>
+            <div className='creategrid ' >
             {
                 courses.map(course =><Course
                     key={course._id}

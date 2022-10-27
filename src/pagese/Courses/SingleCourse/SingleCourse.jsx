@@ -1,13 +1,14 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
-import {  useLoaderData } from 'react-router-dom';
+import {  Link, useLoaderData } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'
+import './SingleCourse.css'
 
 const SingleCourse = () => {
     const singleCourse = useLoaderData();
-    const { author, title,  rating, description, image_url} = singleCourse;
+    const { author, title,  rating, image_url, _id} = singleCourse;
 
     
     const exportPDF =()=>{
@@ -26,26 +27,34 @@ const SingleCourse = () => {
     
     return (
         <div>
-            <Card className=" mb-5">
+            <Card className=" mb-5 singleCard-body">
             <Card.Header className="d-flex justify-content-between align-items-center">
-              <Card.Img variant="top" className="fluid" src={image_url} />
+              <Card.Img variant="top" className="singleCourse-img" src={image_url} />
             </Card.Header>
             <Card.Body>
               <Card.Title>{title}</Card.Title>
-              <div className="d-flex justify-content-between align-items-center">
+              <div className="d-flex justify-content-between  align-items-center">
+                <div>
                 <p className="mb-0">Author: {author?.name}</p>
-                
+                <p className="mb-0">Publish date: {author?.published_date}</p>  
+                </div>
 
                 <div>
                   <FaStar className="text-warning me-2" />
                   <span>{rating?.number}</span>
                 </div>
               </div>
-              <div className='mt-3'>
-                {description}
-              </div>
-              <div className='mt-2 mb-3'>
+              
+              <div className='d-flex justify-content-between'>
+              <div className=' mb-3'>
               <Button onClick={()=>{exportPDF()}} >Download PDF</Button>
+              </div>
+              <div className=' mb-3'>
+              <Link to={`/access/${_id}`}>
+              <Button  >Get Premium</Button>
+              </Link>
+              </div>
+
               </div>
             </Card.Body>
             <Card.Footer className="d-flex justify-content-between"></Card.Footer>
