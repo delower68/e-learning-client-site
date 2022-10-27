@@ -16,7 +16,7 @@ const RightSideNav = () => {
 
   return (
     <div className="mt-5">
-      <h3>All Courses: {courses.length} </h3>
+      <h3 className="mt-5">All Courses: {courses.length} </h3>
       <div>
         {courses.map((course) => (
           

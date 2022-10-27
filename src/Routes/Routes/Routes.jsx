@@ -8,6 +8,7 @@ import ErrorPage from "../../pagese/ErrorPage/ErrorPage";
 import Footer from "../../pagese/Footer/Footer";
 import Home from "../../pagese/Home/Home";
 import Login from "../../pagese/Login/Login";
+import Question from "../../pagese/Question/Question,";
 import Register from "../../pagese/Register/Register";
 import PrivateRoute from "../../PriveteRoute/PrivateRoute";
 
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog/>
+            },
+            {
+                path: '/question',
+                element: <Question/>
             },
             {
                 path: '/footer',

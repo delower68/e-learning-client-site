@@ -5,7 +5,7 @@ const Blog = () => {
   return (
     <div>
       <div className="mb-5 p-3 ">
-        <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-gray-900">
+        <div className="container max-w-4xl px-10 py-6 mx-auto ">
           <div className="mt-3">
             <h5>What is Cors?</h5>
 

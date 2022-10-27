@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar collapseOnSelect expand="lg" bg="light" variant="light"  sticky="top" >
         <Container>
         
            
@@ -64,7 +64,7 @@ const Header = () => {
                 </Link>
 
               <Tippy content='Your Question'>
-                <Link>
+                <Link to='/question'>
               <Button  variant="light">
                 FAQ
               </Button>
