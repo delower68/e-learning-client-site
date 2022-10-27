@@ -9,8 +9,7 @@ const UserAccess = () => {
     return (
         <div>
             <div className='mt-3 mb-4'>
-                <h4>Welcome <span className='font-bold'>{user?.displayName}</span> to our exclusive courses.</h4>
-                
+                <h4>Welcome <span className='fw-bold'>{user?.displayName}</span> to our exclusive courses.</h4>   
             </div>
             <div>
             <h5>{title}</h5>

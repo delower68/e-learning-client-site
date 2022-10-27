@@ -79,7 +79,7 @@ const Login = () => {
 
       <h1 className="mt-5">Please Login </h1>
 
-      <Form onSubmit={handleSubmit} className="mt-5 " style={{ width: '50%' }}>
+      <Form onSubmit={handleSubmit} className="mt-5 " style={{ width: '60%' }}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control

@@ -23,7 +23,6 @@ const RightSideNav = () => {
             <ListGroup key={course._id}>
               <Link to={`/courses/${course._id}`}><Button variant="light" className="mb-2 list-unstyled">{course.title}</Button></Link>
             </ListGroup>
-          
         ))}
       </div>
     </div>

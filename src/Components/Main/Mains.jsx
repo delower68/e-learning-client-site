@@ -5,7 +5,6 @@ import Footer from "../../pagese/Footer/Footer";
 import Header from "../../pagese/Shared/Header/Header";
 import RightSideNav from "../../pagese/Shared/RightSideNav/RightSideNav";
 
-
 const Mains = () => {
   return (
     <div>

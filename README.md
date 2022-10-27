@@ -14,8 +14,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-#### Website Name - 
-*** e-Learning
+#### `Website Name:  e-Learning`
 
 ### Live website- 
 
@@ -23,7 +22,16 @@ You may also see any lint errors in the console.
 ```
     What is used in this website-
 ```
-    .React-Bootstraps
+#### All framework
+``` 
+    react bootstrap 
+    react icon
+    tippy tooltip
+    dark and light toggle switch
+
+
+```
+
     .Firebase authentication
     .Vercel CLI for server site
     .Create some private route
